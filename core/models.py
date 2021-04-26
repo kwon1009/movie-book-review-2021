@@ -10,3 +10,22 @@ class TimeStampedModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Contents(models.Model):
+
+    """ Contents Model Definition """
+
+    KIND_BOOK = "book"
+    KIND_MOVIE = "movie"
+
+    KIND_CHOICES = (
+        (KIND_BOOK, "Book"),
+        (KIND_MOVIE, "Movie"),
+    )
+
+    title = models.CharField(max_length=100)
+    kind = models.CharField(max_length=10, choices=KIND_CHOICES)
+
+    class Meta:
+        abstract = True

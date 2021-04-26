@@ -23,6 +23,21 @@ class User(AbstractUser):
         max_length=10, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
     )
 
-    # my_list
-    # like_list
-    # wish_list
+    my_list = models.ForeignKey(
+        "lists.ReviewList",
+        related_name="my_users",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    fav_list = models.ForeignKey(
+        "lists.ReviewList",
+        related_name="fav_users",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    wish_list = models.ForeignKey(
+        "lists.ReviewList",
+        related_name="wish_users",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
